@@ -1,6 +1,0 @@
-"pokemonrp"
-{
-  "base"        "base"
-  "title"       "PokemonRP"
-  "menusystem"  "1"
-}
