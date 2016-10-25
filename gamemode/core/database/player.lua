@@ -1,8 +1,5 @@
 if (SERVER) then
 
-util.AddNetworkString("PlayerRetrieveDATAInterface")
-util.AddNetworkString("PlayerRetrieveDATASpawn")
-
 --------------------------------------
 -- Core
 --------------------------------------

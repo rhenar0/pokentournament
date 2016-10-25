@@ -11,9 +11,11 @@ function GiveWeapon()
   if type_playerspawn == 1 then
     ply_playerspawn:Give(pokeball)
   else type_playerspawn == 2 then
-    net.Start("PokemonSpawn")
-    net.WriteString(playersteam_playerspawn)
+    net.Start("PokemonSpawnModels")
     net.WriteString(models_playerspawn)
+    net.Send(ply_playerspawn)
+    net.Start("PokemonSpawnPlayer")
+    net.WriteString(playersteam_playerspawn)
     net.Send(ply_playerspawn)
   end
 
