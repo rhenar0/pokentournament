@@ -1,0 +1,15 @@
+ENT.Type = "anim"
+ENT.PrintName		= ""
+ENT.Author			= "Baddog & Rhenar"
+ENT.Contact			= ""
+ENT.Purpose			= ""
+ENT.Instructions	= ""
+ENT.Base = "base_gmodentity"
+ENT.Name = "pb"
+ENT.ent = ""
+ENT.type = "normal"
+ENT.Alpha = 255
+ENT.BounceSnd = Sound("Pokeballs/bounce.wav")
+ENT.CaptureSnd = Sound("Pokeballs/capture.wav")
+ENT.PrintName = "Pokeball"
+ENT.GrenadeOwner = nil

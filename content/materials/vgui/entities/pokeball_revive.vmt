@@ -1,0 +1,7 @@
+"UnlitGeneric" 
+{ 
+	"$basetexture"		"vgui/entities/pokeball_revive" 
+	"$vertexcolor" 		1 
+	"$vertexalpha" 		1 
+	"$nolod" 			1 
+} 

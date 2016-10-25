@@ -1,5 +1,8 @@
 if (SERVER) then
 
+util.AddNetworkString("PlayerRetrieveDATAInterface")
+util.AddNetworkString("PlayerRetrieveDATASpawn")
+
 --------------------------------------
 -- Core
 --------------------------------------
@@ -44,13 +47,30 @@ if (SERVER) then
 
   function GM:PlayerSpawn(ply)
 
-    plys = ply:SteamID64()
+    local plys = ply:SteamID64()
     if sql.Query("SELECT id WHERE "..plys.." FROM gm_prp_player") then
+      local type = sql.QueryValue("SELECT type WHERE "..plys.." FROM gm_prp_player")
+      local models = sql.Query("SELECT models WHERE "..plys.." FROM gm_prp_player")
+      local money = sql.QueryValue("SELECT money WHERE "..plys.." FROM gm_prp_player")
+      local xp = sql.QueryValue("SELECT xp WHERE "..plys.." FROM gm_prp_player")
+      local level = sql.QueryValue("SELECT level WHERE "..plys.." FROM gm_prp_player")
 
+      net.Start("PlayerRetrieveDATAInterface")
+      net.WriteString(plys, 32)
+      net.WriteString(type)
+      net.Send(ply)
+
+      net.Start("PlayerRetrieveDATASpawn")
+      net.WriteString(plys)
+      net.WriteString(models)
+      net.WriteString(type)
+      net.Send(ply)
     else
       Msg("-Nouveau Joueur : "..plys.." : Creation DATA...")
       sql.Query("INSERT INTO gm_prp_player (id, type, models, money, xp, level) VALUES (id = "..plys..", type = 0, models = 'models/test.mdl', money = 0, xp = 0, level = 1)")
       Msg("-Nouveau Joueur : "..plys.." : Creation DATA : OK")
+      net.Start("NewPlayer")
+      net.Send(ply)
     end
 
   end
